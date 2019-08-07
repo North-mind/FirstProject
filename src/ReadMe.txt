@@ -1,0 +1,1 @@
+Jak ka¿dy utworzy now¹ ga³¹Ÿ swoja to w folderze src umieszczamy pliki z programami, czyli np. tworzymy w src nowy folder o nazwie programu nad którym pracujemy
