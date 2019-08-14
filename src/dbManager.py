@@ -25,8 +25,7 @@ def runDB():
 def createTableWithID(tableName):
     sqlCreateTableSyntax = """
     CREATE TABLE {}(id INTEGER);
-    """.format(tableName)
-    
+    """.format(tableName)    
     activeDB.execute(sqlCreateTableSyntax)
 
 
@@ -35,23 +34,22 @@ def createColumn(tableName, columnName, columnType):
     ALTER TABLE {}
     ADD {} {}
     """.format(tableName, columnName, columnType)
-    
     activeDB.execute(sqlCreateColumnSyntax)
     db.commit()
 
 
 ### create dbHeaders example ###
-dbHeaders = {
-    'date':'DATE', 
-    'category':'VARCHAR(30)',
-    'title':'VARCHAR(200)', 
-    'text':'VARCHAR(8000)',
-    'author':'VARCHAR(40)'
-}
-
-for header in dbHeaders:
-    createColumn('books', header, dbHeaders[header])
-
+#dbHeaders = {
+#    'date':'DATE', 
+#    'category':'VARCHAR(30)',
+#    'title':'VARCHAR(200)', 
+#    'text':'VARCHAR(8000)',
+#    'author':'VARCHAR(40)'
+#}
+#
+#for header in dbHeaders:
+#    createColumn('books', header, dbHeaders[header])
+#
 ### end example ###
 
 def setPrimaryKey(tableName, columnName):
@@ -88,12 +86,12 @@ def insertInTable(tableName, values):
     activeDB.executemany(sqlInsertIntoSyntax, values)
 
 ### example of data set ###
-
-values = [(3, '2019-08-13 13:00:00', "sport", "Lewy blysnal", "Lewandowski strzelił 2 bramki Enerdze Cottbus"), 
-          (4, '2019-08-13 13:10:00', "sport", "Milik nie zagral", "Arkadusz Milik nie wzial udziału w meczu towarzystkim z powodu kontuzji kolana")]
-
-insertInTable('news', values)
-
+#
+#values = [(3, '2019-08-13 13:00:00', "sport", "Lewy blysnal", "Lewandowski strzelił 2 bramki #Enerdze Cottbus"), 
+#          (4, '2019-08-13 13:10:00', "sport", "Milik nie zagral", "Arkadusz Milik nie wzial #udziału w meczu towarzystkim z powodu kontuzji kolana")]
+#
+#insertInTable('news', values)
+#
 ### end example ###
 
 
