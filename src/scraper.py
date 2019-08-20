@@ -2,6 +2,8 @@ import requests
 from user_agent import generate_user_agent, generate_navigator
 from pprint import pprint
 from bs4 import BeautifulSoup
+import json
+import codecs
 
 #bibloteki
 #user agent - pip
@@ -79,5 +81,10 @@ def PaginationArticle():
     # GetArticlesFromArticleList(pCurrentPageArticleLists)
     # print(end)
 
-PaginationArticle()
+def ArrayArticleToJosnFile():
+    with codecs.open ("Article.json", 'w', encoding='utf-8') as outfile:
+        for pArticle in ARTICLELIST:
+            json.dump(pArticle.__dict__, outfile, ensure_ascii=False)
 
+PaginationArticle()
+#ArrayArticleToJosnFile()
