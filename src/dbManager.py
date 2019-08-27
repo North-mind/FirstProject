@@ -1,3 +1,4 @@
+    
 #!/usr/bin/env python
 # coding: utf-8
 
@@ -24,8 +25,9 @@ def runDB():
 
 def createTableWithID(tableName):
     sqlCreateTableSyntax = """
-    CREATE TABLE {}(id INTEGER);
-    """.format(tableName)    
+    CREATE TABLE {}(NewsId INTEGER NOT NULL, PRIMARY KEY (NewsId));
+    """.format(tableName)
+    
     activeDB.execute(sqlCreateTableSyntax)
 
 
@@ -37,24 +39,27 @@ def createColumn(tableName, columnName, columnType):
     activeDB.execute(sqlCreateColumnSyntax)
     db.commit()
 
+
 def setPrimaryKey(tableName, columnName):
-    sqlPrimatyKeySyntx = """
+    sqlPrimaryKeySyntax = """
     ALTER TABLE {} 
     ADD PRIMARY KEY ({});
     """.format(tableName, columnName)
-    activeDB.execute(sqlPrimatyKeySyntax)
+    activeDB.execute(sqlPrimaryKeySyntax)
 
 
 def dropTable(tableName):
     sqlDropTableSyntax = """
     DROP TABLE {}
     """.format(tableName)
+    
     activeDB.execute(sqlDropTableSyntax)
 
 
 def selectData(selectedColumn, tableName):
     sqlSelectSyntax = """
     SELECT {} FROM {}""".format(selectedColumn, tableName)
+    
     activeDB.execute(sqlSelectSyntax)
     selectedData = activeDB.fetchall()
     return selectedData
@@ -63,9 +68,10 @@ def selectData(selectedColumn, tableName):
 def insertInTable(tableName, values):
     sqlInsertIntoSyntax = """
     INSERT INTO {}
-    VALUES (?, ?, ?, ?, ?) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
     """.format(tableName)
     activeDB.executemany(sqlInsertIntoSyntax, values)
+
 
 def inputSqlStatement():
     sqlStatement = input("Input SQL Statement: ")
